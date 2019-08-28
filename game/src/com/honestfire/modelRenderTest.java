@@ -9,12 +9,12 @@ import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
-import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.loader.G3dModelLoader;
 import com.badlogic.gdx.graphics.g3d.utils.AnimationController;
 import com.badlogic.gdx.graphics.g3d.utils.AnimationController.AnimationDesc;
 import com.badlogic.gdx.graphics.g3d.utils.AnimationController.AnimationListener;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
+import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.utils.UBJsonReader;
 
 public class modelRenderTest implements Screen {
@@ -56,15 +56,12 @@ public class modelRenderTest implements Screen {
         Gdx.input.setInputProcessor(camController);
         
         modelBatch = new ModelBatch();
-        
-        // Model loader needs a binary json reader to decode
+
         UBJsonReader jsonReader = new UBJsonReader();
-        // Create a model loader passing in our json reader
+
         G3dModelLoader modelLoader = new G3dModelLoader(jsonReader);
-        // Now load the model by name
-        // Note, the model (g3db file ) and textures need to be added to the assets folder of the Android proj
+
         model = modelLoader.loadModel(Gdx.files.getFileHandle("model2.g3db", FileType.Internal));
-        // Now create an instance.  Instance holds the positioning data, etc of an instance of your model
         modelInstance = new ModelInstance(model);
         
         //fbx-conv is supposed to perform this rotation for you... it doesnt seem to
